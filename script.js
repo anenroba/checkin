@@ -1,8 +1,10 @@
 const url = "https://api-swa.onrender.com/contactos";
+let contactosData = [];
 
 fetch(url)
   .then(response => response.json())
   .then(data => {
+    contactosData = data; // guardamos todos los contactos para después usarlos
     const tbody = document.querySelector("#tabla-contactos tbody");
 
     data.forEach(contacto => {
@@ -23,3 +25,13 @@ fetch(url)
   .catch(error => {
     console.error("Error al cargar los contactos:", error);
   });
+
+// Función para elegir un nombre aleatorio
+function mostrarNombreAleatorio() {
+  if (contactosData.length === 0) return;
+
+  const randomIndex = Math.floor(Math.random() * contactosData.length);
+  const nombre = contactosData[randomIndex].nombre;
+
+  document.getElementById("nombre-aleatorio").textContent = `Nombre seleccionado: ${nombre}`;
+}
