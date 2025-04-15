@@ -1,0 +1,79 @@
+/* Fuente y colores base */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #e0f7fa; /* celeste claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Contenedor del formulario */
+  .form-container {
+    background: #d0f0d0; /* verde claro */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  /* Título del formulario */
+  .form-container h2 {
+    text-align: center;
+    color: #2e7d32; /* verde más fuerte */
+  }
+  
+  /* Etiquetas */
+  label {
+    display: block;
+    margin-top: 15px;
+    color: #00695c;
+    font-weight: bold;
+  }
+  
+  /* Inputs */
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #b2dfdb;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+  }
+  
+  /* Botón */
+  button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #2196f3; /* azul */
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #1976d2;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .form-container {
+      padding: 15px;
+    }
+  
+    button[type="submit"] {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+  
