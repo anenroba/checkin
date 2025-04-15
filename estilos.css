@@ -5,7 +5,7 @@ body {
     font-family: Arial, sans-serif;
     background: #e0f7fa; /* celeste claro */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
   }
@@ -18,6 +18,7 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     width: 90%;
     max-width: 400px;
+    margin: 20px 0;
   }
   
   /* Título del formulario */
@@ -65,7 +66,77 @@ body {
     background-color: #1976d2;
   }
   
-  /* Responsive */
+  /* Tabla de contactos */
+  .table-container {
+    width: 95%;
+    max-width: 1000px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    overflow-x: auto;
+  }
+  
+  .table-container h1 {
+    text-align: center;
+    color: #30aadd;
+    padding: 20px 0 10px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto 20px;
+  }
+  
+  thead {
+    background-color: #a8edea; /* celeste claro */
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tbody tr:hover {
+    background-color: #d2f5e3; /* verde claro hover */
+  }
+  
+  /* Responsive para tabla */
+  @media screen and (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+  
+    thead {
+      display: none;
+    }
+  
+    tr {
+      margin-bottom: 1rem;
+      background: #f5ffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+  
+    td {
+      padding: 10px;
+      text-align: right;
+      position: relative;
+    }
+  
+    td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 10px;
+      font-weight: bold;
+      color: #555;
+      text-align: left;
+    }
+  }
+  
+  /* Responsive del formulario */
   @media (max-width: 480px) {
     .form-container {
       padding: 15px;
