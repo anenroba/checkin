@@ -11,11 +11,9 @@ fetch(url)
       const row = document.createElement("tr");
 
       row.innerHTML = `
-        <td data-label="ID">${contacto.id}</td>
         <td data-label="Nombre">${contacto.nombre}</td>
         <td data-label="Teléfono">${contacto.telefono}</td>
         <td data-label="Correo">${contacto.correo}</td>
-        <td data-label="RUT">${contacto.rut}</td>
         <td data-label="Fecha Registro">${new Date(contacto.fecha_registro).toLocaleDateString()}</td>
       `;
 
@@ -33,5 +31,5 @@ function mostrarNombreAleatorio() {
   const randomIndex = Math.floor(Math.random() * contactosData.length);
   const nombre = contactosData[randomIndex].nombre;
 
-  document.getElementById("nombre-aleatorio").textContent = `Nombre seleccionado: ${nombre}`;
+  document.getElementById("nombre-aleatorio").textContent = `🎉 ${nombre} fue seleccionado`;
 }

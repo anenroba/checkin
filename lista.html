@@ -11,19 +11,16 @@
     <h1>Contactos Registrados</h1>
     
     <div class="selector-container">
-        <label id="nombre-aleatorio" class="nombre-label">Haz clic para seleccionar un nombre al azar</label>
-        <button onclick="mostrarNombreAleatorio()">Elegir al Azar</button>
+      <label id="nombre-aleatorio" class="nombre-label">Haz clic para seleccionar un nombre al azar</label>
+      <button onclick="mostrarNombreAleatorio()">Elegir al Azar</button>
     </div>
-      
 
     <table id="tabla-contactos">
       <thead>
         <tr>
-          <th>ID</th>
           <th>Nombre</th>
           <th>Teléfono</th>
           <th>Correo</th>
-          <th>RUT</th>
           <th>Fecha Registro</th>
         </tr>
       </thead>
@@ -31,6 +28,46 @@
     </table>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    let datosContactos = [];
+
+    async function cargarContactos() {
+      try {
+        const res = await fetch("https://api-swa.onrender.com/contactos");
+        const data = await res.json();
+        datosContactos = data;
+
+        const tbody = document.querySelector("#tabla-contactos tbody");
+        tbody.innerHTML = "";
+
+        data.forEach(contacto => {
+          const fila = document.createElement("tr");
+
+          fila.innerHTML = `
+            <td>${contacto.nombre}</td>
+            <td>${contacto.telefono}</td>
+            <td>${contacto.correo}</td>
+            <td>${new Date(contacto.fecha_registro).toLocaleDateString()}</td>
+          `;
+
+          tbody.appendChild(fila);
+        });
+      } catch (error) {
+        console.error("Error al cargar los contactos:", error);
+      }
+    }
+
+    function mostrarNombreAleatorio() {
+      if (datosContactos.length === 0) return;
+
+      const random = Math.floor(Math.random() * datosContactos.length);
+      const nombre = datosContactos[random].nombre;
+
+      document.getElementById("nombre-aleatorio").textContent = `🎉 ${nombre} fue seleccionado`;
+    }
+
+    // Carga inicial de datos
+    cargarContactos();
+  </script>
 </body>
 </html>
