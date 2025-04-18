@@ -35,12 +35,22 @@
       try {
         const res = await fetch("https://api-swa.onrender.com/contactos");
         const data = await res.json();
-        datosContactos = data;
+
+        // Filtrar por correo único
+        const correosUnicos = new Map();
+        data.forEach(contacto => {
+          if (!correosUnicos.has(contacto.correo)) {
+            correosUnicos.set(contacto.correo, contacto);
+          }
+        });
+
+        const contactosFiltrados = Array.from(correosUnicos.values());
+        datosContactos = contactosFiltrados;
 
         const tbody = document.querySelector("#tabla-contactos tbody");
         tbody.innerHTML = "";
 
-        data.forEach(contacto => {
+        contactosFiltrados.forEach(contacto => {
           const fila = document.createElement("tr");
 
           fila.innerHTML = `

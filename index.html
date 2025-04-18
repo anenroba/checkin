@@ -46,13 +46,19 @@
 
         const resultado = await res.json();
 
+        const mensaje = document.getElementById("mensaje");
+
         if (res.ok) {
-          document.getElementById("mensaje").textContent = "✅ Registro exitoso";
-          document.getElementById("mensaje").style.color = "green";
+          mensaje.textContent = "✅ Registro exitoso";
+          mensaje.style.color = "green";
           document.getElementById("form-contacto").reset();
         } else {
-          document.getElementById("mensaje").textContent = "❌ Error al registrar";
-          document.getElementById("mensaje").style.color = "red";
+          if (resultado?.error === "El correo ya está registrado") {
+            mensaje.textContent = "❌ El correo ya está registrado";
+          } else {
+            mensaje.textContent = "❌ Error al registrar";
+          }
+          mensaje.style.color = "red";
           console.error("Error del servidor:", resultado);
         }
       } catch (error) {
