@@ -19,6 +19,9 @@
       <label for="correo">Correo</label>
       <input type="email" id="correo" name="correo" required />
 
+      <label for="organizacion">Organización</label>
+      <input type="text" id="organizacion" name="organizacion" required />
+
       <button type="submit">Enviar</button>
     </form>
 
@@ -32,8 +35,9 @@
       const nombre = document.getElementById("nombre").value.trim();
       const telefono = document.getElementById("telefono").value.trim();
       const correo = document.getElementById("correo").value.trim();
+      const organizacion = document.getElementById("organizacion").value.trim();
 
-      const datos = { nombre, telefono, correo };
+      const datos = { nombre, telefono, correo, organizacion };
 
       try {
         const res = await fetch("https://api-swa.onrender.com/nuevoasistente", {
@@ -45,7 +49,6 @@
         });
 
         const resultado = await res.json();
-
         const mensaje = document.getElementById("mensaje");
 
         if (res.ok) {

@@ -21,6 +21,7 @@
           <th>Nombre</th>
           <th>Teléfono</th>
           <th>Correo</th>
+          <th>Organización</th>
           <th>Fecha Registro</th>
         </tr>
       </thead>
@@ -57,6 +58,7 @@
             <td>${contacto.nombre}</td>
             <td>${contacto.telefono}</td>
             <td>${contacto.correo}</td>
+            <td>${contacto.organizacion || '-'}</td>
             <td>${new Date(contacto.fecha_registro).toLocaleDateString()}</td>
           `;
 
